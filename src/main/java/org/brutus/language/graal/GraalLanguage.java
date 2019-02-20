@@ -61,8 +61,6 @@ public abstract class GraalLanguage extends Language<Value> {
                 .newBuilder(getLanguageType().getLanguageId())
                 .allowAllAccess(true)
                 .build();
-
-        this.context.initialize(getLanguageType().getLanguageId());
     }
 
     @Override
