@@ -15,16 +15,16 @@ public abstract class Language<B> {
         this.initialize();
     }
 
-    protected abstract void setCustomBinding(B binding);
-    protected abstract B getBinding();
+    public abstract void setCustomBinding(B binding);
+    public abstract B getBinding();
 
-    protected abstract void addToBinding(String key, Object value);
-    protected abstract void removeFromBinding(String key);
+    public abstract void addToBinding(String key, Object value);
+    public abstract void removeFromBinding(String key);
 
     protected abstract void initialize();
 
-    protected abstract void close();
-    protected abstract void forceClose();
+    public abstract void close();
+    public abstract void forceClose();
 
     public abstract void execute(Reader source) throws ExecutionFailedException;
 

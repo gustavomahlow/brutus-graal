@@ -15,6 +15,9 @@ public class Main {
             e.printStackTrace();
         }
 
-        new GroovyLanguage().execute(new StringReader("x = 10\nx+=10\nprintln(x)"));
+        GroovyLanguage language = new GroovyLanguage();
+        language.addToBinding("teste", 10);
+
+        language.execute(new StringReader("println(teste)"));
     }
 }

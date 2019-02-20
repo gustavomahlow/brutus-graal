@@ -16,22 +16,22 @@ public abstract class ScriptLanguage extends Language<Bindings> {
     }
 
     @Override
-    protected void setCustomBinding(Bindings binding) {
+    public void setCustomBinding(Bindings binding) {
         scriptEngine.setBindings(binding, ScriptContext.ENGINE_SCOPE);
     }
 
     @Override
-    protected Bindings getBinding() {
+    public Bindings getBinding() {
         return scriptEngine.getBindings(ScriptContext.ENGINE_SCOPE);
     }
 
     @Override
-    protected void addToBinding(String key, Object value) {
+    public void addToBinding(String key, Object value) {
         getBinding().put(key, value);
     }
 
     @Override
-    protected void removeFromBinding(String key) {
+    public void removeFromBinding(String key) {
         getBinding().remove(key);
     }
 
@@ -43,12 +43,12 @@ public abstract class ScriptLanguage extends Language<Bindings> {
     }
 
     @Override
-    protected void close() {
+    public void close() {
 
     }
 
     @Override
-    protected void forceClose() {
+    public void forceClose() {
 
     }
 

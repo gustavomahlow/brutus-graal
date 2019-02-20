@@ -24,7 +24,7 @@ public abstract class GraalLanguage extends Language<Value> {
     }
 
     @Override
-    protected void setCustomBinding(Value binding) {
+    public void setCustomBinding(Value binding) {
         Value oldBinding = getBinding();
 
         Set<String> oldMembers = oldBinding
@@ -41,17 +41,17 @@ public abstract class GraalLanguage extends Language<Value> {
     }
 
     @Override
-    protected Value getBinding() {
+    public Value getBinding() {
         return context.getBindings(getLanguageType().getLanguageId());
     }
 
     @Override
-    protected void addToBinding(String key, Object value) {
+    public void addToBinding(String key, Object value) {
         getBinding().putMember(key, value);
     }
 
     @Override
-    protected void removeFromBinding(String key) {
+    public void removeFromBinding(String key) {
         getBinding().removeMember(key);
     }
 
@@ -71,7 +71,7 @@ public abstract class GraalLanguage extends Language<Value> {
     }
 
     @Override
-    protected void forceClose() {
+    public void forceClose() {
         context.close(true);
     }
 
