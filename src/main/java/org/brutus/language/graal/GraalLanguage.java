@@ -99,4 +99,14 @@ public abstract class GraalLanguage extends Language<Value> {
     public void executeMethod(String methodName, Object... args) throws ExecutionFailedException {
         context.getBindings(getLanguageType().getLanguageId()).getMember(methodName).execute(args);
     }
+
+    @Override
+    public <T> T getFromBinding(String key, Class<T> clazz) {
+        return getBinding().getMember(key).as(clazz);
+    }
+
+    @Override
+    public Object getFromBinding(String key) {
+        return getBinding().getMember(key);
+    }
 }

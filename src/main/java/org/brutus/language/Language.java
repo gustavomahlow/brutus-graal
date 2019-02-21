@@ -17,6 +17,8 @@ public abstract class Language<B> {
 
     public abstract void setCustomBinding(B binding);
     public abstract B getBinding();
+    public abstract <T> T getFromBinding(String key, Class<T> clazz);
+    public abstract Object getFromBinding(String key);
 
     public abstract void addToBinding(String key, Object value);
     public abstract void removeFromBinding(String key);

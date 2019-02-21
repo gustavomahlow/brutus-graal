@@ -55,7 +55,7 @@ public abstract class ScriptLanguage extends Language<Bindings> {
     @Override
     public void execute(Reader source) throws ExecutionFailedException {
         try {
-            scriptEngine.eval(source);
+            scriptEngine.eval(source, getBinding());
         } catch (ScriptException e) {
             throw new ExecutionFailedException(
                     String.format("Failed to execute ScriptLanguage %s", getLanguageType().getLanguageId()),
@@ -73,5 +73,15 @@ public abstract class ScriptLanguage extends Language<Bindings> {
         } catch (NoSuchMethodException e) {
             throw new ExecutionFailedException(String.format("Failed to execute method %s, method not found", methodName), e);
         }
+    }
+
+    @Override
+    public <T> T getFromBinding(String key, Class<T> clazz) {
+        return clazz.cast(getBinding().get(key));
+    }
+
+    @Override
+    public Object getFromBinding(String key) {
+        return getBinding().get(key);
     }
 }
