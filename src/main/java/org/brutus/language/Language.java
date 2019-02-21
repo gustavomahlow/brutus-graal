@@ -27,6 +27,7 @@ public abstract class Language<B> {
     public abstract void forceClose();
 
     public abstract void execute(Reader source) throws ExecutionFailedException;
+    public abstract void executeMethod(String methodName, Object ...args) throws ExecutionFailedException;
 
     public LanguageType getLanguageType() {
         return languageType;

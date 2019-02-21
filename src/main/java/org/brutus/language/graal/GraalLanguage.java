@@ -94,4 +94,9 @@ public abstract class GraalLanguage extends Language<Value> {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public void executeMethod(String methodName, Object... args) throws ExecutionFailedException {
+        context.getBindings(getLanguageType().getLanguageId()).getMember(methodName).execute(args);
+    }
 }

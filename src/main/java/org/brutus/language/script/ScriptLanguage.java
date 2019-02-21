@@ -63,4 +63,15 @@ public abstract class ScriptLanguage extends Language<Bindings> {
             );
         }
     }
+
+    @Override
+    public void executeMethod(String methodName, Object... args) throws ExecutionFailedException {
+        try {
+            ((Invocable) scriptEngine).invokeFunction(methodName, args);
+        } catch (ScriptException e) {
+            throw new ExecutionFailedException(String.format("Failed to execute method %s", methodName), e);
+        } catch (NoSuchMethodException e) {
+            throw new ExecutionFailedException(String.format("Failed to execute method %s, method not found", methodName), e);
+        }
+    }
 }
